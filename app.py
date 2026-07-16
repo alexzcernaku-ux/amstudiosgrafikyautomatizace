@@ -179,8 +179,22 @@ def handle_message(event, client):
         )
         raise
 
+    failed = []
     for filename, png_bytes in files_out:
-        client.files_upload_v2(channel=channel_id, thread_ts=thread_ts, file=png_bytes, filename=filename)
+        for attempt in range(2):  # jeden pokus o opakování, Slack API umí občas krátce zakolísat
+            try:
+                client.files_upload_v2(channel=channel_id, thread_ts=thread_ts, file=png_bytes, filename=filename)
+                break
+            except Exception as e:
+                if attempt == 1:
+                    failed.append((filename, str(e)))
+
+    if failed:
+        names = ", ".join(f for f, _ in failed)
+        client.chat_postMessage(
+            channel=channel_id, thread_ts=thread_ts,
+            text=f"Zbytek se povedl, ale tohle se nepodařilo nahrát ani na druhý pokus: {names}. Zkus prosím zopakovat celý požadavek.",
+        )
 
 
 @flask_app.route("/slack/events", methods=["POST"])
