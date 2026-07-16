@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: 1080px 1350px; margin: 0; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Poppins',sans-serif; }
+
+  .slide { width:1080px; height:1350px; position:relative; overflow:hidden; background:#ffffff; }
+
+  .header { position:absolute; top:70px; left:80px; right:80px; display:flex; align-items:center; justify-content:space-between; }
+  .brand img { height:28px; }
+  .page-ind { font-size:20px; color:#9a9a94; font-weight:600; }
+
+  .headline { position:absolute; top:220px; left:80px; font-size:52px; font-weight:700; color:#002E4D; line-height:1.25; max-width:900px; }
+
+  .list { position:absolute; top:470px; left:80px; width:920px; }
+  .row { display:flex; align-items:center; gap:24px; padding:24px 0; border-bottom:1px solid #e0ddd3; }
+  .row:last-child { border-bottom:none; }
+  .row .ic { flex:0 0 48px; height:48px; border-radius:50%; background:#002E4D; }
+  .row p { font-size:30px; color:#333330; font-weight:600; }
+
+  .footer { position:absolute; bottom:70px; left:80px; right:80px; display:flex; align-items:center; justify-content:space-between; }
+  .swipe { font-size:22px; color:#9a9a94; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="header">
+    <div class="brand"><img src="assets/logo_navy.png"></div>
+    <div class="page-ind">5/6</div>
+  </div>
+
+  <div class="headline">Co jsme na téhle zakázce natočili</div>
+
+  <div class="list">
+    {% for sluzba in sluzby %}
+    <div class="row">
+      <div class="ic"></div>
+      <p>{{ sluzba }}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="footer">
+    <div></div>
+    <div class="swipe">Swipe &#8594;</div>
+  </div>
+</div>
+</body>
+</html>

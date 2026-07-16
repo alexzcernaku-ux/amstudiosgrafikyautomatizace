@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: 1080px 1350px; margin: 0; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Poppins',sans-serif; }
+
+  .slide { width:1080px; height:1350px; position:relative; overflow:hidden; background:#ffffff; }
+
+  .header { position:absolute; top:70px; left:80px; right:80px; display:flex; align-items:center; justify-content:space-between; }
+  .brand img { height:28px; }
+  .page-ind { font-size:20px; color:#9a9a94; font-weight:600; }
+
+  .headline { position:absolute; top:220px; left:80px; font-size:50px; font-weight:700; color:#002E4D; line-height:1.25; max-width:920px; }
+
+  .col { position:absolute; left:80px; width:920px; border-radius:14px; padding:38px 40px; }
+  .col-bad { top:420px; background:#f4f2ee; }
+  .col-good { top:772px; background:#002E4D; }
+  .col h3 { font-size:26px; font-weight:700; margin-bottom:26px; }
+  .col-bad h3 { color:#8a8980; }
+  .col-good h3 { color:#ffffff; }
+
+  .row { display:flex; align-items:flex-start; gap:16px; margin-bottom:20px; }
+  .row:last-child { margin-bottom:0; }
+  .row .ic { flex:0 0 28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+  .col-bad .ic { background:#d8d4cb; }
+  .col-good .ic { background:#335871; }
+  .row .ic svg { width:15px; height:15px; }
+  .row p { font-size:24px; line-height:1.4; }
+  .col-bad .row p { color:#6b6a63; }
+  .col-good .row p { color:#eaf0f4; }
+
+  .footer { position:absolute; bottom:70px; left:80px; right:80px; display:flex; align-items:center; justify-content:space-between; }
+  .swipe { font-size:22px; color:#9a9a94; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="header">
+    <div class="brand"><img src="assets/logo_navy.png"></div>
+    <div class="page-ind">{{ slide_number }}/{{ total_slides }}</div>
+  </div>
+
+  <div class="headline">{{ nadpis }}</div>
+
+  <div class="col col-bad">
+    <h3>{{ label_spatne | default("Mýtus") }}</h3>
+    {% for bod in body_spatne %}
+    <div class="row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></div><p>{{ bod }}</p></div>
+    {% endfor %}
+  </div>
+
+  <div class="col col-good">
+    <h3>{{ label_dobre | default("Realita") }}</h3>
+    {% for bod in body_dobre %}
+    <div class="row"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div><p>{{ bod }}</p></div>
+    {% endfor %}
+  </div>
+
+  <div class="footer">
+    <div></div>
+    <div class="swipe">Swipe &#8594;</div>
+  </div>
+</div>
+</body>
+</html>
