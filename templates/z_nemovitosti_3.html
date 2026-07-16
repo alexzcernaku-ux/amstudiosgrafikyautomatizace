@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: 1080px 1350px; margin: 0; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Poppins',sans-serif; }
+
+  .slide { width:1080px; height:1350px; position:relative; overflow:hidden;
+    background-color:#002E4D; background-image:url('assets/texture_ad.png');
+    background-size:cover; background-position:left center; }
+
+  .header { position:absolute; top:70px; left:80px; right:80px; display:flex; align-items:center; justify-content:space-between; }
+  .brand img { height:28px; }
+  .page-ind { font-size:20px; color:#ffffff; opacity:.6; font-weight:600; }
+
+  .headline { position:absolute; top:220px; left:80px; font-size:50px; font-weight:700; color:#ffffff; line-height:1.25; max-width:920px; }
+
+  .stat-row { position:absolute; top:500px; left:80px; width:920px; }
+  .srow { display:flex; align-items:baseline; gap:28px; padding:26px 0; border-bottom:1px solid rgba(255,255,255,.15); }
+  .srow:last-child { border-bottom:none; }
+  .srow .n { font-size:56px; font-weight:700; color:#ffffff; min-width:180px; }
+  .srow p { font-size:26px; color:#c3d2da; line-height:1.4; }
+
+  .footer { position:absolute; bottom:70px; left:80px; right:80px; display:flex; align-items:center; justify-content:space-between; }
+  .swipe { font-size:22px; color:#ffffff; opacity:.85; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="header">
+    <div class="brand"><img src="assets/logo_white.png"></div>
+    <div class="page-ind">{{ slide_number }}/{{ total_slides }}</div>
+  </div>
+
+  <div class="headline">Proč se na prezentaci vyplatí nešetřit</div>
+
+  <div class="stat-row">
+    <div class="srow"><div class="n">78 %</div><p>kupujících rozhoduje podle fotek dřív, než si přečte popis</p></div>
+    <div class="srow"><div class="n">217 %</div><p>průměrná návratnost investice do profesionální prezentace</p></div>
+  </div>
+
+  <div class="footer">
+    <div></div>
+    <div class="swipe">Swipe &#8594;</div>
+  </div>
+</div>
+</body>
+</html>

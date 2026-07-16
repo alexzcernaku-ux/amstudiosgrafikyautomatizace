@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: 1080px 1350px; margin: 0; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Poppins',sans-serif; }
+
+  .slide { width:1080px; height:1350px; position:relative; overflow:hidden; background:#ffffff; }
+
+  .header { position:absolute; top:70px; left:80px; right:80px; display:flex; align-items:center; justify-content:space-between; }
+  .brand img { height:28px; }
+  .page-ind { font-size:20px; color:#9a9a94; font-weight:600; }
+
+  .headline { position:absolute; top:220px; left:80px; font-size:52px; font-weight:700; color:#002E4D; line-height:1.25; max-width:920px; }
+
+  .list { position:absolute; top:470px; left:80px; width:920px; }
+  .row { display:flex; align-items:flex-start; gap:20px; padding:26px 0; border-bottom:1px solid #e0ddd3; }
+  .row:last-child { border-bottom:none; }
+  .row .ic { flex:0 0 40px; height:40px; border-radius:50%; background:#f4f2ee; display:flex; align-items:center; justify-content:center; }
+  .row .ic svg { width:20px; height:20px; }
+  .row p { font-size:30px; color:#333330; line-height:1.4; padding-top:6px; }
+
+  .footer { position:absolute; bottom:70px; left:80px; right:80px; display:flex; align-items:center; justify-content:space-between; }
+  .swipe { font-size:22px; color:#9a9a94; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="header">
+    <div class="brand"><img src="assets/logo_navy.png"></div>
+    <div class="page-ind">{{ slide_number }}/{{ total_slides }}</div>
+  </div>
+
+  <div class="headline">{{ nadpis }}</div>
+
+  <div class="list">
+    {% for bod in body %}
+    <div class="row">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#b3261e" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></div>
+      <p>{{ bod }}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="footer">
+    <div></div>
+    <div class="swipe">Swipe &#8594;</div>
+  </div>
+</div>
+</body>
+</html>

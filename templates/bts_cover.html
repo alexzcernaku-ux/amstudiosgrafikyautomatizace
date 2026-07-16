@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: 1080px 1350px; margin: 0; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Poppins',sans-serif; }
+
+  .slide { width:1080px; height:1350px; position:relative; overflow:hidden; background:#002E4D; }
+  .photo { position:absolute; top:0; left:0; width:1080px; height:1350px; object-fit:cover; opacity:.55; }
+  .overlay { position:absolute; top:0; left:0; width:1080px; height:1350px; background:rgba(0,46,77,.35); }
+
+  .eyebrow { position:absolute; top:90px; left:80px; font-size:24px; letter-spacing:2px; color:#8fa8b8; text-transform:uppercase; font-weight:600; }
+
+  .headline { position:absolute; top:150px; left:80px; font-size:70px; font-weight:700; color:#ffffff; line-height:1.15; max-width:900px; }
+
+  .footer { position:absolute; bottom:70px; left:80px; right:80px; display:flex; align-items:center; justify-content:space-between; }
+  .page-ind { font-size:20px; color:#ffffff; opacity:.6; font-weight:600; }
+  .swipe { font-size:20px; color:#ffffff; opacity:.85; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <img class="photo" src="assets/{{ photo_filenames[0] }}">
+  <div class="overlay"></div>
+  <div class="eyebrow">Zákulisí natáčení</div>
+  <div class="headline">{{ headline | default("Takhle vzniká prezentace, co prodává") }}</div>
+  <div class="footer">
+    <div class="page-ind">1/{{ total_slides }}</div>
+    <div class="swipe">Swipe &#8594;</div>
+  </div>
+</div>
+</body>
+</html>

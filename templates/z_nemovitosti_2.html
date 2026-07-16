@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: 1080px 1350px; margin: 0; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Poppins',sans-serif; }
+
+  .slide { width:1080px; height:1350px; position:relative; overflow:hidden; background:#ffffff; }
+
+  .header { position:absolute; top:70px; left:80px; right:80px; display:flex; align-items:center; justify-content:space-between; }
+  .brand img { height:28px; }
+  .page-ind { font-size:20px; color:#9a9a94; font-weight:600; }
+
+  .headline { position:absolute; top:220px; left:80px; font-size:52px; font-weight:700; color:#002E4D; line-height:1.25; max-width:900px; }
+
+  .body-text { position:absolute; top:440px; left:80px; font-size:32px; color:#333330; line-height:1.6; max-width:900px; }
+
+  .tag-row { position:absolute; top:700px; left:80px; width:920px; display:flex; gap:16px; flex-wrap:wrap; }
+  .tag { background:#EAF0F4; color:#002E4D; font-size:24px; font-weight:600; padding:14px 26px; border-radius:30px; }
+
+  .footer { position:absolute; bottom:70px; left:80px; right:80px; display:flex; align-items:center; justify-content:space-between; }
+  .swipe { font-size:22px; color:#9a9a94; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="header">
+    <div class="brand"><img src="assets/logo_navy.png"></div>
+    <div class="page-ind">{{ slide_number }}/{{ total_slides }}</div>
+  </div>
+
+  <div class="headline">{{ nadpis_nemovitosti | default("O nemovitosti", true) }}</div>
+
+  {% if popis_nemovitosti %}<div class="body-text">{{ popis_nemovitosti }}</div>{% endif %}
+
+  <div class="tag-row">
+    {% for tag in tagy %}<div class="tag">{{ tag }}</div>{% endfor %}
+  </div>
+
+  <div class="footer">
+    <div></div>
+    <div class="swipe">Swipe &#8594;</div>
+  </div>
+</div>
+</body>
+</html>

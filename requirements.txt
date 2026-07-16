@@ -1,0 +1,8 @@
+flask==3.0.3
+slack-bolt==1.20.1
+anthropic==0.39.0
+weasyprint==69.0
+supabase==2.9.1
+python-dotenv==1.0.1
+gunicorn==23.0.0
+requests==2.32.3
